@@ -10,7 +10,7 @@ import indexRouter from '@s-routes/index';
 import usersRouter from '@s-routes/users';
 
 // Importing configurations
-import configTemplateEngine  from '@s-config/template-engine'
+import configTemplateEngine from '@s-config/template-engine'
 
 // Webpack Modules
 import webpack from 'webpack';
