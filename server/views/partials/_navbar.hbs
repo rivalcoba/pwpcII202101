@@ -1,8 +1,28 @@
+<!-- Se crea la estructura del Dropdown Menu -->
+<ul id="dropdownMenu" class="dropdown-content">
+  <li>
+    <a href="#">
+      <i class="large material-icons" style="margin: 2px;">
+        list
+      </i>
+      Listar Proyectos
+    </a>
+  </li>
+  <li class="divider"></li>
+  <li>
+    <a href="#">
+      <i class="large material-icons" style="margin: 2px;">
+        add_box
+      </i>
+      Crear Proyecto
+    </a>
+  </li>
+</ul>
 <nav class="light-blue darken-4">
   <div class="container">
     <div class="nav-wrapper">
       <a href="/" class="brand-logo">
-        &#128209;ProjNotes
+        ProjNotes
       </a>
       <ul class="right hide-on-med-and-down">
         <li>
@@ -15,14 +35,49 @@
             Acerca de...
           </a>
         </li>
+        <li>
+          <a class="dropdown-trigger" href="#!" data-target="dropdownMenu">
+            Dropdown
+            <i class="material-icons right">
+              arrow_drop_down
+            </i>
+          </a>
+        </li>
       </ul>
       <!-- Barra de Navegacion Movil -->
       <a href="#" data-target="nav-mobile" class="sidenav-trigger">
-        <i class="material-icons">menu</i>
+        <i class="material-icons">
+          menu
+        </i>
       </a>
       <ul class="sidenav" id="nav-mobile">
-        <li><a href="/">Inicio</a></li>
-        <li><a href="/about">Acerca de...</a></li>
+        <li>
+          <a href="/">
+            Inicio
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="large material-icons" style="margin: 2px;">
+              list
+            </i>
+            Listar Proyectos
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#">
+            <i class="large material-icons" style="margin: 2px;">
+              add_box
+            </i>
+            Crear Proyecto
+          </a>
+        </li>
+        <li>
+          <a href="/about">
+            Acerca de...
+          </a>
+        </li>
       </ul>
     </div>
   </div>
