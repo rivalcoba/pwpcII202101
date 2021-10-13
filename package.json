@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "NODE_ENV=production node ./dist-server/bin/www",
-    "w:d": "NODE_ENV=development babel-watch --watch ./server/views ./server/bin/www",
+    "dev": "cross-env NODE_ENV=development babel-watch --watch ./server/views ./server/bin/www",
     "w:s": "NODE_ENV=development webpack serve --config ./webpack.dev.config.js --mode development",
     "cleans": "rimraf dist-server",
     "cleanc": "rimraf public/js",
@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
+    "cross-env": "^7.0.3",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "hbs": "^4.1.1",
