@@ -1,3 +1,5 @@
 # Ingnorando las dependencias
 node_modules
 dist-server
+*.env
+*.log
