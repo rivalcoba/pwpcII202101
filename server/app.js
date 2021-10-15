@@ -1,5 +1,5 @@
 import createError from 'http-errors';
-import express from'express';
+import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
@@ -18,18 +18,21 @@ import webpackDevConfig from '../webpack.dev.config';
 const env = process.env.NODE_ENV || 'developement';
 
 // Se crea la aplicación express
-var app = express();
+const app = express();
 
 // Verificando el modo de ejecución de la aplicación
-if(env === 'development'){
+if (env === 'development') {
   console.log('> Excecuting in Development Mode: Webpack Hot Reloading');
   // Paso 1. Agregando la ruta del HMR
   // reload=true: Habilita la recarga del frontend cuando hay cambios en el codigio
   // fuente del frontend
   // timeout=1000: Tiempo de espera entre recarga y recarga de la pagina
-  webpackConfig.entry = ['webpack-hot-middleware/client?reload=true&timeout=1000', webpackConfig.entry];
-  
-  // Paso 2. Agregamos el plugin 
+  webpackConfig.entry = [
+    'webpack-hot-middleware/client?reload=true&timeout=1000',
+    webpackConfig.entry,
+  ];
+
+  // Paso 2. Agregamos el plugin
   webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
 
   // Paso 3. Crear el compilador de webpack
@@ -37,13 +40,15 @@ if(env === 'development'){
 
   // Paso 4. Agregando el Middleware a la cadena de Middlewares
   // de nuestra aplicación
-  app.use(webpackDevMiddleware(compiler,{
-    publicPath: webpackDevConfig.output.publicPath
-  }));
+  app.use(
+    webpackDevMiddleware(compiler, {
+      publicPath: webpackDevConfig.output.publicPath,
+    })
+  );
 
   // Paso 5. Agregando el Webpack Hot middleware
   app.use(webpackHotMiddleware(compiler));
-}else{
+} else {
   console.log('> Excecuting in Production Mode...');
 }
 
@@ -55,18 +60,18 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname,'..','public')));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
